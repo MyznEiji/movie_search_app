@@ -49,7 +49,7 @@ def save_data(title, date, description, poster):
         host='localhost',
         user='root',
         password="",
-        database='movie_serach ')
+        database='movie_serach')
     cursor = conn.cursor()
     cursor.execute("INSERT INTO movies(title, date, description, poster) values(%s,%s,%s,%s)" , (title, date, description, poster))
     conn.commit()
