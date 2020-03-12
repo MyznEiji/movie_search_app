@@ -35,6 +35,7 @@ def get_data(url):
 
     # get the data
     title = is_nulldata(soup.find('div', id='subcontent').find('span', itemprop="name"))
+    print(title)
     date = is_nulldata(soup.find('div', id='subcontent').find('span', class_="year"))
     description = is_nulldata(soup.find('div', id='details').find('div', itemprop='description'))
     poster = soup.find('div', id="poster").find('meta', itemprop="url")["content"]
@@ -46,9 +47,9 @@ def save_data(title, date, description, poster):
     # save on db
     conn = mysql.connector.connect(
         host='localhost',
-        user='hoge',
-        password="password",
-        database='movie')
+        user='root',
+        password="",
+        database='movie_serach ')
     cursor = conn.cursor()
     cursor.execute("INSERT INTO movies(title, date, description, poster) values(%s,%s,%s,%s)" , (title, date, description, poster))
     conn.commit()
